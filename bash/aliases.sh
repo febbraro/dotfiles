@@ -30,4 +30,5 @@ alias dcc='drush cc all'
 alias finder='open /System/Library/CoreServices/Finder.app $PWD'
 
 # Services
+# TODO: Figure out how to get the current link in place so we dont need the specific version
 alias start-mongo='mongod run --config /usr/local/Cellar/mongodb/current/mongod.conf'
