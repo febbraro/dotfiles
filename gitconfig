@@ -1,0 +1,12 @@
+[user]
+	name = Frank Febbraro
+	email = frankfebbraro@gmail.com
+
+[branch]
+	autosetupmerge = true
+
+[core]
+	excludesfile = /Users/frank/.gitignore
+
+[color]
+	ui = true
