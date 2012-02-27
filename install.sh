@@ -8,18 +8,23 @@ SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
 DOTS="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
+# Backup old files.
+BACKUP_DIR=${HOME}/.dot-backup/`date "+%Y-%m-%d-%H-%M-%S"`
+[[ -d ${BACKUP_DIR} ]] || {
+  mkdir -p ${BACKUP_DIR}
+}
+
 prompt_for_replace() {
   read -a wipeout_conf \
        -p "Do you want to replace $1? [y/n]: " \
-       -N 1
+       -n 1
   echo 
 
-  if [[ "${wipeout_conf,,}" == 'y' ]]; then
-    
-    # Check/create archive 
-    
-    rm -rf $1
-    
+  if [[ "${wipeout_conf}" == 'y' ]]; then
+    # Archive it first
+	cp -fr $1 ${BACKUP_DIR}/
+    #rm -rf $1
+	echo "rm -rf $1"
     return 1
   else
     return 0
@@ -35,7 +40,8 @@ check_and_link() {
   fi
 
   if [[ $do_link -eq 1 ]]; then
-    ln -s $1 $2
+    #ln -s $1 $2
+	echo "ln -s $1 $2"
   fi
 }
 
@@ -54,6 +60,7 @@ mac_install() {
 
 linux_install() {
   # Nothing yet...
+  echo "No linux specific config yet"
 }
 
 tmpfile() { 
@@ -64,17 +71,17 @@ tmpfile() {
   chmod ugo+rwX ~/.tmp
 }
 
-#tmpfile
-#all_platforms
+tmpfile
+all_platforms
 
 case `uname` in 
 
   $OSX_UNAME) 
-    #mac_install
+    mac_install
     ;;
 
   $LINUX_UNAME)
-    #linux_install
+    linux_install
     ;;
 
 esac
