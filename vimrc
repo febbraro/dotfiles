@@ -21,6 +21,7 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
+" Stop vim from exiting with status 1.
 filetype on
 
 
@@ -40,3 +41,10 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType inc set omnifunc=phpcomplete#CompletePHP
+
+" Lots of history / undo.
+set history=1000
+set undolevels=1000
+
+" Set the terminal title
+set title
