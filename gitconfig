@@ -1,12 +1,13 @@
 [user]
-	name = Frank Febbraro
-	email = frankfebbraro@gmail.com
+  name = Frank Febbraro
+  email = frankfebbraro@gmail.com
 
 [branch]
-	autosetupmerge = true
+  autosetupmerge = true
 
 [core]
-	excludesfile = /Users/frank/.gitignore
+  excludesfile = /Users/frank/.gitignore
+  editor = vim
 
 [color]
-	ui = true
+  ui = true
