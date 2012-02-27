@@ -9,7 +9,7 @@ while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
 DOTS="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 # Backup old files.
-BACKUP_DIR=${HOME}/.dot-backup/`date "+%Y-%m-%d-%H-%M-%S"`
+BACKUP_DIR=${HOME}/.dot-backup/`date "+%Y-%m-%d-%H%M%S"`
 [[ -d ${BACKUP_DIR} ]] || {
   mkdir -p ${BACKUP_DIR}
 }
@@ -21,10 +21,9 @@ prompt_for_replace() {
   echo 
 
   if [[ "${wipeout_conf}" == 'y' ]]; then
-    # Archive it first
+    # Archive, then remove
 	cp -fr $1 ${BACKUP_DIR}/
-    #rm -rf $1
-	echo "rm -rf $1"
+    rm -rf $1
     return 1
   else
     return 0
@@ -40,8 +39,7 @@ check_and_link() {
   fi
 
   if [[ $do_link -eq 1 ]]; then
-    #ln -s $1 $2
-	echo "ln -s $1 $2"
+    ln -s $1 $2
   fi
 }
 
