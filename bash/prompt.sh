@@ -10,7 +10,6 @@ CYAN="\[\033[1;36m\]"
 ##########################################################################
 # Git command and tag/branch completion as well as putting the branch
 # in your prompt including a "*" if it is dirty (changed)
-source /usr/local/etc/bash_completion.d/git-completion.bash
 export GIT_PS1_SHOWDIRTYSTATE=true
 
 txtylw='\033[1;33m' # Yellow

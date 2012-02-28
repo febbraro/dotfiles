@@ -19,6 +19,11 @@ $OSX_UNAME)
 
   # Java support
   export JAVA_HOME=/Library/Java/Home
+
+  # Brew Bash Completion
+  if [ -f `brew --prefix`/etc/bash_completion ]; then
+    source `brew --prefix`/etc/bash_completion
+  fi
   ;;
 
 $LINUX_UNAME)
