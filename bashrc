@@ -52,5 +52,7 @@ export GRINDER_HOME=${LOADTEST_HOME}/grinder
 export GRAILS_HOME=~/tools/grails/current
 export PATH=${PATH}:${GRAILS_HOME}/bin
 
+export NODE_PATH=/usr/local/lib/node_modules:${NODE_PATH}
+
 # Setup SSH Agent Forwarding
 ssh-add
