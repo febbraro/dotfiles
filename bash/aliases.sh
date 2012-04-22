@@ -23,6 +23,12 @@ alias go='git checkout '
 alias gpush='git push origin master'
 alias gpull='git pull origin master'
 
+# Make hub wrap git
+eval "$(hub alias -s)"
+
+# Paste to private gist.
+alias gaste="pbpaste | gist -p"
+
 # Drupal aliases
 alias dcc='drush cc all'
 
