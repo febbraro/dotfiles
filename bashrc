@@ -10,10 +10,6 @@ $OSX_UNAME)
   BREW_PATH=/usr/local
   export PATH=${BREW_PATH}/bin:${PATH}
   
-  # MAMP Support
-  MAMP_PATH=/Applications/MAMP/Library/bin:/Applications/MAMP/bin/php5/bin
-  export PATH=${MAMP_PATH}:${PATH}
-
   # Support for Homebrew Python
   export PATH=${BREW_PATH}/share/python:${PATH}  
 
@@ -23,6 +19,11 @@ $OSX_UNAME)
   # Brew Bash Completion
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     source `brew --prefix`/etc/bash_completion
+  fi
+
+  # Support rbenv for Ruby version switching
+  if [ -f `brew --prefix`/bin/rbenv ]; then
+    eval "$(rbenv init -)"
   fi
   ;;
 
