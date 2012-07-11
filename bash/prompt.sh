@@ -1,4 +1,4 @@
-# Super sweet prompt courtesy of smerrill
+# Super awesome neckbeard prompt. Thanks to smerrill
 
 # Double-check that we are in an interactive session.
 [[ $- = *i* ]] || return

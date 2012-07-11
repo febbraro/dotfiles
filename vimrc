@@ -1,4 +1,5 @@
 syntax on
+set background=dark
 set nocompatible
 set showmatch
 set guioptions-=T
