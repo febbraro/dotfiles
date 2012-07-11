@@ -1,19 +1,49 @@
-#!/bin/bash
+# Super awesome neckbeard prompt. Thanks to smerrill
 
-RED="\[\033[0;31m\]"
-YELLOW="\[\033[0;33m\]"
-GREEN="\[\033[1;32m\]"
-BLUE="\[\033[1;34m\]"
-NORMAL="\[\033[0;0m\]"
-CYAN="\[\033[1;36m\]"
+# Double-check that we are in an interactive session.
+[[ $- = *i* ]] || return
 
-##########################################################################
-# Git command and tag/branch completion as well as putting the branch
-# in your prompt including a "*" if it is dirty (changed)
-export GIT_PS1_SHOWDIRTYSTATE=true
+# Handle resizes gracefully.
+shopt -s checkwinsize
 
-txtylw='\033[1;33m' # Yellow
-fgcolor="\033[0m"    # unsets color to term's fg color
-twolevelprompt='$([ "$PWD" != "${PWD%/*/*/*}" ] && echo "/...${PWD##${PWD%/*/*}}" || echo "$PWD")'
-gitprompt='$(__git_ps1 "[%s]")'
-export PS1="\[$txtylw\] $twolevelprompt\[$fgcolor\]$gitprompt"'\$ '
+# Terminal.app sucks.
+[[ "$TERM_PROGRAM" == "Apple_Terminal" ]] && return
+
+# Force `ls` and `grep` to be colorful under screen/tmux.
+#[[ "$TERM" == "screen-256color" ]] && {
+#  alias ls="ls --color=always"
+#  alias grep="grep --color=always"
+#}
+
+# Use vcprompt.
+vcprompt_ps1() {
+  [[ `vcprompt -f %n` == 'svn' ]] && vcprompt -f ' at %r %m' || vcprompt -f ' on %b %m%a%u'
+}
+
+# a functional but sane prompt
+bash_prompt() {
+  local NONE="\[\e[0m\]"    # unsets color to term's fg color
+
+  # regular colors
+  local K="\[\e[0;30m\]" R="\[\e[0;31m\]" G="\[\e[0;32m\]" Y="\[\e[0;33m\]" \
+        B="\[\e[0;34m\]" M="\[\e[0;35m\]" C="\[\e[0;36m\]" W="\[\e[0;37m\]"
+
+  # emphasized (bolded) colors
+  local EMK="\[\e[1;30m\]" EMR="\[\e[1;31m\]" EMG="\[\e[1;32m\]" EMY="\[\e[1;33m\]" \
+        EMB="\[\e[1;34m\]" EMM="\[\e[1;35m\]" EMC="\[\e[1;36m\]" EMW="\[\e[1;37m\]"
+
+  # username/host color for root/other
+  (( UID != 0 )) && local UC=$W || local UC=$R
+
+  RET_VALUE='$((( RET )) && printf ":\[\e[1;31m\]$RET\[\e[0m\]")'
+  VC_INFO='$(vcprompt_ps1)'
+
+  # space goes inside the printf so its not there when there's no git branch
+  PS1=" ${EMK}┌┤${UC}\u${EMK}@${UC}\h${RET_VALUE} ${EMG}[\D{%b %d %H:%M:%S}] ${EMB}\w${EMM}${VC_INFO}${EMW}\n ${EMK}└╼${NONE} "
+  PS4='+$BASH_SOURCE:$LINENO:$FUNCNAME: '
+}
+
+# show return val of last command
+PROMPT_COMMAND='RET=$?'
+bash_prompt
+unset bash_prompt
