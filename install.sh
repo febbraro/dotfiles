@@ -50,6 +50,8 @@ all_platforms() {
   check_and_link $DOTS/vimrc ~/.vimrc  
   check_and_link $DOTS/gitconfig ~/.gitconfig  
   check_and_link $DOTS/gitignore ~/.gitignore  
+
+  check_and_link $DOTS/bin ~/bin
 }
 
 mac_install() {

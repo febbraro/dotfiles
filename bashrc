@@ -8,7 +8,7 @@ case `uname` in
 
 $OSX_UNAME) 
   BREW_PATH=/usr/local
-  export PATH=${BREW_PATH}/bin:${PATH}
+  export PATH=${BREW_PATH}/bin:${BREW_PATH}/sbin:${PATH}
   
   # Support for Homebrew Python
   export PATH=${BREW_PATH}/share/python:${PATH}  
@@ -41,6 +41,7 @@ $LINUX_UNAME)
 esac
 
 export SVN_EDITOR=vim
+export PATH=${PATH}:${HOME}/bin
 
 # General tool support
 export TOOLS_HOME=${HOME}/tools

@@ -1,0 +1,106 @@
+#! /bin/bash
+
+MYSQL="/usr/local/bin/mysql.server"
+
+NGINX="/usr/local/sbin/nginx"
+NGINXPID="/usr/local/var/run/nginx.pid"
+
+PHPFPM="/usr/local/sbin/php-fpm --fpm-config /usr/local/etc/php/5.3/php-fpm.conf"
+PHPFPMPID="/usr/local/var/run/php-fpm.pid"
+
+REDIS="/usr/local/bin/redis-server /usr/local/etc/redis.conf"
+REDISPID="/usr/local/var/run/redis.pid"
+
+function mysql() {
+    case $1 in
+    "start" )
+        $MYSQL start
+        ;;
+    "stop" )
+        $MYSQL stop
+        ;;
+    "status" )
+        sudo ps aux | grep mysql
+        ;;
+    "restart" )
+        $MYSQL restart
+        ;;
+    * )
+        echo "Valid commands for mysql: start | stop | restart | status"
+        ;;
+    esac
+}
+
+function nginx() {
+    case $1 in
+    "start" )
+        echo "Starting nginx ..."
+        sudo $NGINX
+        ;;
+    "stop" )
+        echo "Stopping nginx ..."
+        sudo kill -SIGQUIT `cat $NGINXPID`
+        ;;
+    "status" )
+        sudo ps aux | grep ngnix;;
+    "restart" )
+        nginx stop
+        nginx start
+        ;;
+    * )
+        echo "Valid commands for nginx: start | stop | restart | status";;
+    esac
+}
+
+function php() {
+    case $1 in
+    "start" )
+        echo "Starting php-pfm ..."
+        $PHPFPM
+        ;;
+    "stop" )
+        echo "Stopping php-pfm ..."
+        sudo kill -SIGQUIT `cat $PHPFPMPID`
+        ;;
+    "status" )
+        sudo ps aux | grep php-pfm;;
+    "restart" )
+        php stop
+        php start
+        ;;
+    * )
+        echo "Valid commands for php: start | stop | restart | status";;
+    esac
+}
+
+function redis() {
+    case $1 in
+    "start" )
+        $REDIS
+        echo "Redis has started"
+        ;;
+    "stop" )
+        sudo kill -SIGQUIT `cat $REDISPID`
+        echo "Redis has stoped"
+        ;;
+    "status" )
+        sudo ps aux | grep redis;;
+    "restart" )
+        redis stop
+        redis start
+        ;;
+    * )
+        echo "Valid commands for redis: start | stop | restart | status";;
+    esac
+}
+
+action=$1
+service=$2
+
+if [ -n "$service" ] 
+then
+    $service $action
+else
+    mysql $action
+    php $action
+fi
