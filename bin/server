@@ -5,8 +5,8 @@ MYSQL="/usr/local/bin/mysql.server"
 NGINX="/usr/local/sbin/nginx"
 NGINXPID="/usr/local/var/run/nginx.pid"
 
-PHPFPM="/usr/local/sbin/php-fpm --fpm-config /usr/local/etc/php/5.3/php-fpm.conf"
 PHPFPMPID="/usr/local/var/run/php-fpm.pid"
+PHPFPM="/usr/local/sbin/php-fpm --fpm-config /usr/local/etc/php/5.3/php-fpm.conf --pid $PHPFPMPID"
 
 REDIS="/usr/local/bin/redis-server /usr/local/etc/redis.conf"
 REDISPID="/usr/local/var/run/redis.pid"
