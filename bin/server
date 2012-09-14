@@ -99,8 +99,9 @@ service=$2
 
 if [ -n "$service" ] 
 then
-    $service $action
+  $service $action
 else
-    mysql $action
-    php $action
+  mysql $action
+  nginx $action
+  php $action
 fi
