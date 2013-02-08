@@ -38,5 +38,7 @@ alias finder='open /System/Library/CoreServices/Finder.app $PWD'
 # Services
 alias start-mongo='mongod run --config /usr/local/etc/mongod.conf'
 alias start-elasticsearch='elasticsearch -f -D es.config=/usr/local/etc/elasticsearch/elasticsearch.yml'
+alias restart-dns='sudo launchctl unload -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist &&
+sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist'
 
 
