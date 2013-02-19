@@ -48,6 +48,7 @@ all_platforms() {
   check_and_link $DOTS/bash ~/.bash
 
   check_and_link $DOTS/vimrc ~/.vimrc  
+  check_and_link $DOTS/inputrc ~/.inputrc  
   check_and_link $DOTS/gitconfig ~/.gitconfig  
   check_and_link $DOTS/gitignore ~/.gitignore  
 
