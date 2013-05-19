@@ -13,6 +13,9 @@ $OSX_UNAME)
   # Support for Homebrew Python
   export PATH=${BREW_PATH}/share/python:${PATH}  
 
+  # Support for Homebrew Node
+  export PATH=${BREW_PATH}/share/npm/bin:${PATH}
+
   # Java support
   export JAVA_HOME=/Library/Java/Home
 
