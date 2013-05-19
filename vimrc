@@ -49,3 +49,7 @@ set undolevels=1000
 
 " Set the terminal title
 set title
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
