@@ -2,7 +2,7 @@
 
 MYSQL="/usr/local/bin/mysql.server"
 
-NGINX="/usr/local/sbin/nginx"
+NGINX="/usr/local/bin/nginx"
 NGINXPID="/usr/local/var/run/nginx.pid"
 
 PHPFPMPID="/usr/local/var/run/php-fpm.pid"
