@@ -44,17 +44,5 @@ esac
 export PATH=${HOME}/.composer/vendor/bin:$PATH
 export SVN_EDITOR=vim
 export PATH=${PATH}:${HOME}/bin
-
-# General tool support
-export TOOLS_HOME=${HOME}/tools
-export PATH=${PATH}:${HOME}/tools/bin
-
-# The Grinder Support
-export LOADTEST_HOME=${TOOLS_HOME}/loadtesting
-export GRINDER_HOME=${LOADTEST_HOME}/grinder
-
-export GRAILS_HOME=~/tools/grails/current
-export PATH=${PATH}:${GRAILS_HOME}/bin
-
 export NODE_PATH=/usr/local/lib/node_modules:${NODE_PATH}
 
