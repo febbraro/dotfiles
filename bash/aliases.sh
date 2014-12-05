@@ -19,7 +19,7 @@ alias ga='git add '
 alias gb='git branch '
 alias gc='git commit'
 alias gd='git diff'
-alias go='git checkout '
+alias gco='git checkout '
 alias gpush='git push origin master'
 alias gpull='git pull origin master'
 

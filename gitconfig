@@ -1,13 +1,15 @@
 [user]
 	name = Frank Febbraro
-  email = frankfebbraro@gmail.com
+	email = frank@phase2technology.com
 
 [branch]
   autosetupmerge = true
 
 [core]
-  excludesfile = /Users/frank/.gitignore
+	excludesfile = /Users/frank/.gitignore
   editor = vim
 
 [color]
   ui = true
+[credential]
+	helper = osxkeychain

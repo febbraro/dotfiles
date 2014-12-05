@@ -40,6 +40,8 @@ $LINUX_UNAME)
 
 esac
 
+# Support for Composer
+export PATH=${HOME}/.composer/vendor/bin:$PATH
 export SVN_EDITOR=vim
 export PATH=${PATH}:${HOME}/bin
 
@@ -56,5 +58,3 @@ export PATH=${PATH}:${GRAILS_HOME}/bin
 
 export NODE_PATH=/usr/local/lib/node_modules:${NODE_PATH}
 
-# Setup SSH Agent Forwarding
-ssh-add
